@@ -10,8 +10,7 @@ jobs:
       - name: Use Node.js LTS
         uses: actions/setup-node@v3
         with:
-          node-version: lts/*
-          cache: npm
+          node-version: 16
   job2:
     runs-on: ubuntu-latest
     steps:
@@ -20,5 +19,4 @@ jobs:
       - name: Use Node.js LTS
         uses: actions/setup-node@v3
         with:
-          node-version: lts/*
-          cache: npm
+          node-version: 14
