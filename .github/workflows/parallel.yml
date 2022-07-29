@@ -12,9 +12,12 @@ jobs:
       - run: exit 1
   job3:
     runs-on: ubuntu-latest
+    if: ${{ always() }}
     needs:
       - job1
       - job2
     steps:
       - run: echo 'Hello'
+      - run: exit 1
+      - run: echo 'the end'
     
