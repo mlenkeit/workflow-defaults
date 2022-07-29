@@ -20,7 +20,7 @@ jobs:
       - run: echo 'Hello'
 #       - run: exit 1
       - run: |
-        echo "NICKNAME=John" >> $GITHUB_ENV
-        echo $NICKNAME
+          echo "NICKNAME=John" >> $GITHUB_ENV
+          echo $NICKNAME
       - run: echo 'the end'
     
