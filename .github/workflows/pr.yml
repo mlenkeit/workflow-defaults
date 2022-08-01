@@ -26,7 +26,7 @@ jobs:
           echo '${{ steps.file_changes.outputs.files_added}}'
           echo '${{ steps.file_changes.outputs.files_removed}}'
 
-          echo '${{ steps.file_changes.outputs.files}}' | jq 'map(select(.|test("\\.md")))' 
+          echo '${{ steps.file_changes.outputs.files_modified}}' | jq 'map(select(.|test("\\.md")))' 
       - run: |
           gh workflow run manual.yml -f os=Unix
           gh run list --workflow=manual.yml
