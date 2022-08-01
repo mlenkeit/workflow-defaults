@@ -27,3 +27,8 @@ jobs:
           gh workflow run test.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Invoke workflow without inputs
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: Manual
+          token: ${{ secrets.GITHUB_TOKEN }}
