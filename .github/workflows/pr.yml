@@ -27,7 +27,7 @@ jobs:
           gh workflow run manual.yml -f os=Unix
           gh run list --workflow=manual.yml
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
       # - name: Invoke workflow without inputs
       #   uses: benc-uk/workflow-dispatch@v1
       #   with:
