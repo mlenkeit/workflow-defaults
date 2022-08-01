@@ -24,11 +24,11 @@ jobs:
           echo '${{ steps.file_changes.outputs.files_added}}'
           echo '${{ steps.file_changes.outputs.files_removed}}'
       - run: |
-          gh workflow run test.yml
+          gh workflow run manual.yml -f os=Unix
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Invoke workflow without inputs
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: Manual
-          token: ${{ secrets.PAT }}
+      # - name: Invoke workflow without inputs
+      #   uses: benc-uk/workflow-dispatch@v1
+      #   with:
+      #     workflow: Manual
+      #     token: ${{ secrets.PAT }}
