@@ -1,0 +1,11 @@
+name: PR Validation
+
+on:
+  pull_request:
+
+jobs:
+  build_and_verify:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo ${{ toJSON(github.event) }}
