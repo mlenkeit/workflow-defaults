@@ -1,0 +1,17 @@
+name: Manual
+
+on:
+  workflow_dispatch: # manual trigger
+    inputs:
+      os:
+        description: "Operating System"
+        required: true
+        type: string
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          echo ${{ inputs.os }}

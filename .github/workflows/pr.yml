@@ -7,6 +7,8 @@ jobs:
   build_and_verify:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
       - run: |
           echo '${{ toJSON(github.event) }}'
       - id: file_changes
@@ -21,3 +23,12 @@ jobs:
           echo '${{ steps.file_changes.outputs.files_modified}}'
           echo '${{ steps.file_changes.outputs.files_added}}'
           echo '${{ steps.file_changes.outputs.files_removed}}'
+      - run: |
+          gh workflow run test.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Invoke workflow without inputs
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: Manual
+          token: ${{ secrets.GITHUB_TOKEN }}
