@@ -25,6 +25,7 @@ jobs:
           echo '${{ steps.file_changes.outputs.files_removed}}'
       - run: |
           gh workflow run manual.yml -f os=Unix
+          gh run list --workflow=manual.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # - name: Invoke workflow without inputs
