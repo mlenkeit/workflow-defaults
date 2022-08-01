@@ -2,6 +2,8 @@ name: PR Validation
 
 on:
   pull_request:
+    paths:
+      - '**.md'
 
 jobs:
   build_and_verify:
@@ -23,6 +25,8 @@ jobs:
           echo '${{ steps.file_changes.outputs.files_modified}}'
           echo '${{ steps.file_changes.outputs.files_added}}'
           echo '${{ steps.file_changes.outputs.files_removed}}'
+
+          echo '${{ steps.file_changes.outputs.files_modified}}' | jq 'map(select(.|test("\\.md")))' 
       - run: |
           gh workflow run manual.yml -f os=Unix
           gh run list --workflow=manual.yml
