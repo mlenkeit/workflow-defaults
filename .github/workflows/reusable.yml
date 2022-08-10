@@ -1,0 +1,23 @@
+on:
+  workflow_call:
+    inputs:
+      os:
+        required: true
+        type: string
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        file:
+          - file-a.md
+          - file-b.md
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Debug
+        run: |
+          echo 'File: ${{ matrix.file }}''
+          echo 'OS: ${{ inputs.os }}'

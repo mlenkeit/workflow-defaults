@@ -15,3 +15,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: |
           echo ${{ inputs.os }}
+  reuse-call:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      os: ${{ inputs.os }}
